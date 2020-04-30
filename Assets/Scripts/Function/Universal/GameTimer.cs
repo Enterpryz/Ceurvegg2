@@ -6,13 +6,13 @@ public class GameTimer : MonoBehaviour
 {
 
     [Tooltip("Timer measurement set in seconds")]
-    [SerializeField] float fltLevelTime = 10;
+    [SerializeField] float fltLevelTimer = 10;
 
     void Update()
     {
-        GetComponent<Slider>().value = Time.timeSinceLevelLoad / fltLevelTime;
+        GetComponent<Slider>().value = Time.timeSinceLevelLoad / fltLevelTimer;
 
-        bool TimerFinished = (Time.timeSinceLevelLoad >= fltLevelTime);
+        bool TimerFinished = (Time.timeSinceLevelLoad >= fltLevelTimer);
         if (TimerFinished)
         {
             Debug.Log("YOUR TIME IS UP FOOL");
