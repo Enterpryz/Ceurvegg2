@@ -14,7 +14,7 @@ public class Fox : MonoBehaviour
             GetComponent<Animator>().SetTrigger("JumpTrigger");
         }
 
-        else if (GOotherObject.GetComponent<Defender>()) ;
+        else if (GOotherObject.GetComponent<Defender>())
         {
             GetComponent<Attacker>().Attack(GOotherObject);
         }

@@ -8,7 +8,7 @@ public class AttackerSpawner : MonoBehaviour
 
     [SerializeField] float fltMinSpawnDelay = 2f;
     [SerializeField] float fltMaxSpawnDelay = 5f;
-    [SerializeField] Attacker attackerPrefab;
+    [SerializeField] Attacker[] attackerPrefabArray;
 
     bool boolSpawn = true; 
 
@@ -24,15 +24,14 @@ public class AttackerSpawner : MonoBehaviour
 
     private void SpawnAttacker()
     {
-        // instantiate an attacker, randomly between min and max spawn delay
+        var attackerIndex = UnityEngine.Random.Range(0, attackerPrefabArray.Length);
+        Spawn(attackerPrefabArray[attackerIndex]);
+    } 
+
+    private void Spawn(Attacker myAttacker)
+    {
         Attacker newAttacker = Instantiate
-            (attackerPrefab, transform.position, transform.rotation) 
-            as Attacker;
-        // The parent of the instantiated Attacker is the transform.
-        // This means that the Spawner object for each lane is the 
-        // parent of the new Attacker. This will allow us to track 
-        // the lanes where Attackers have been spawned.
+            (myAttacker, transform.position, transform.rotation) as Attacker;
         newAttacker.transform.parent = transform;
-    } // SpawnAttacker()
-    
+    }
 } // class AttackerSpawner
